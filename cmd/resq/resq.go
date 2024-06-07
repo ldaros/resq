@@ -59,7 +59,7 @@ func printRequest(req *http.Request, args arguments.CommandLineArguments) {
 		fmt.Printf("Request URL:\n%s\n\n", req.URL.String())
 	}
 
-	if args.ShowRequestBody {
+	if args.ShowRequestBody && req.Body != nil {
 		fmt.Println("Request body:")
 		body, err := io.ReadAll(req.Body)
 		utils.CheckError(err, "reading request body")
